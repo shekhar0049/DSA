@@ -1,51 +1,25 @@
 class Solution {
 public:
-    bool validSub(vector<vector<char>>& board, int sr, int er, int sc, int ec) {
-        unordered_set<char> st;
-        for(int row = sr; row<=er; row++) {
-            for(int col = sc; col <= ec; col++) {
-                char ch = board[row][col];
-                if(ch == '.') continue;
-                if(st.count(ch)) return false;
-                st.insert(ch);
-            }
-        }
-        return true;
-    }
-    
     bool isValidSudoku(vector<vector<char>>& board) {
-        //validate rows
-        for(int row = 0; row<9; row++) {
-            unordered_set<char> st;
-            for(int col = 0; col <9; col++) {
-                char ch = board[row][col];
-                if(ch == '.') continue;
-                if(st.count(ch)) return false;
-                st.insert(ch);
+        unordered_set<string> st;
+
+        for(int i = 0 ; i<9 ; i++){
+            for(int j = 0; j<9 ; j++){
+
+                if(board[i][j] == '.')continue;
+
+                string row = string(1, board[i][j]) + " row " + to_string(i);
+                string col = string(1, board[i][j]) + " col " + to_string(j);
+                string box = string(1, board[i][j]) + " box " + to_string(i/3) + " "+ to_string(j/3);
+
+                if(st.find(row) != st.end() || st.find(col) != st.end() || st.find(box) != st.end())
+                   return false;
+
+                st.insert(row);
+                st.insert(col);
+                st.insert(box);   
             }
         }
-        
-        //validate columns
-        for(int col = 0; col<9; col++) {
-            unordered_set<char> st;
-            for(int row = 0; row <9; row++) {
-                char ch = board[row][col];
-                if(ch == '.') continue;
-                if(st.count(ch)) return false;
-                st.insert(ch);
-            }
-        }
-        
-		//validate ech 3*3 box
-        for(int sr = 0; sr < 9; sr+=3) {
-            int er = sr+2;
-            for(int sc = 0; sc < 9; sc+=3) {
-                int ec = sc+2;
-                if(!validSub(board, sr, er, sc, ec))
-                    return false;
-            }
-        }
-        
         return true;
     }
 };

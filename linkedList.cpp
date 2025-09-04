@@ -45,15 +45,16 @@ int lengthofLL(Node* head){
     return count;
 
 }
-// bool searchinLL(Node* head, int key){
-//     Node* temp = head;
-//     while(temp){
-//         if(temp->data == key){
-//             return 1;
-//         }
-//     }
-//     return 0;
-//}
+int searchinLL(Node* head, int val){
+    Node* temp = head;
+    while(temp){
+        if(temp->data == val){
+            return 1;
+        }
+        temp = temp->next;
+    }
+    return 0;
+}
 int main(){
     vector<int> arr = {15,1,2,3};
     int count;
@@ -64,10 +65,8 @@ int main(){
         cout << temp->data << " ";
         temp = temp->next;
     }
-//     bool ans;
-//  ans =searchinLL(head, 2);
     count = lengthofLL(head);
     cout << endl << count << endl;
-    // cout << endl << ans << endl;
+    cout << endl << searchinLL(head, 9) << endl;
 
 }

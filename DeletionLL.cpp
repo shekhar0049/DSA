@@ -14,8 +14,7 @@ struct Node{
     }
 
     public:
-
-    Node(int data1){
+        Node(int data1){
         data = data1;
         next = nullptr;
 

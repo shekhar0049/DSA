@@ -9,9 +9,9 @@ public:
     }
     vector<int> getNoZeroIntegers(int n) {
        for(int i=1; i<=n-1; i++){
-        int j = n-i;
-        if(check(i) && check(j)){
-            return {i,j};
+        
+        if(check(i) && check(n-i)){
+            return {i,n-i};
         }
        }
        return {};

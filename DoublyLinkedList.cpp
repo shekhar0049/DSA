@@ -42,5 +42,4 @@ int main(){
     Node* head = arr2dll(arr);
     print(head);
 
-
 }

@@ -83,10 +83,17 @@ Node* insertBeforeKth(Node* head, int k, int val){
 
 }
 
+void InsertBeforeNode(Node* node,int val ){
+    Node* prev = node->back;
+    Node* newNode = new Node(val, node, prev);
+    node->back = prev->next = newNode;
+
+}
+
 int main(){
     vector<int> arr = {5,8,12,4,3};
     Node* head = arr2dll(arr);
-    head = insertBeforeKth(head , 5, 22);
+    InsertBeforeNode(head->next->next->next , 22);
     print(head);
 
 return 0;

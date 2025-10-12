@@ -8,9 +8,8 @@ public:
             mpp[nums[i]]++;
         }
         for(auto it: mpp){
-            if((it.second % k) == 0){
-                int num = it.first * it.second;
-                sum += num;
+            if((it.second % k) == 0){ 
+                sum += it.first * it.second;
             }
         }
         return sum;
